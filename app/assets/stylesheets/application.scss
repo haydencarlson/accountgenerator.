@@ -11,8 +11,28 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require datagrid
  *= stub "active_admin"
  *= require_self
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+
+body, html {
+  height:100%;
+}
+
+.container {
+  height: calc(100% - 52px);
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  .form {
+    width: 360px;
+  }
+}
+
+.navbar {
+  margin:0;
+}

@@ -9,7 +9,9 @@
   </head>
 
   <body>
-    <%= render 'layouts/navbar' unless @disable_header %>
-    <%= yield %>
+      <%= render 'layouts/navbar' unless @disable_header %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
