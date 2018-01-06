@@ -1,0 +1,15 @@
+<div class="login-page">
+  <div class="form">
+    <%= form_for(@subscription, class: 'register-form') do |f| %>
+
+      <div class="field">
+        <%= f.collection_select :service_id, Service.order(:name), :id, :name, {:prompt => 'Select a service'} %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Subscribe to this service", class: 'button' %>
+      </div>
+      <p class="message">Want to see your subscriptions? <a href="<%= subscriptions_path %>">Click Here</a></p>
+    <% end %>
+  </div>
+</div>
