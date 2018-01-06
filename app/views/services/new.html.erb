@@ -1,15 +1,27 @@
 <div class="login-page">
   <div class="form">
     <%= form_for(@subscription, class: 'register-form') do |f| %>
+      <div class="field">
+        <%= f.collection_select :service_id, Service.order(:name), :id, :name, {:prompt => 'Select a service'}, {:class => 'form-control serviceSelector'} %>
+      </div>
+      <% if current_user %>
+
+        <div class="field">
+          <%= f.collection_select :id, Gateway.order(:name), :id, :name, {:prompt => 'Choose a payment method'}, {:class => 'form-control serviceSelector'} %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Subscribe to this service", class: 'button' %>
+        </div>
+
+        <p class="message">Want to see your subscriptions? <a href="<%= subscriptions_path %>">Click Here</a></p>
+      <% else %>
 
       <div class="field">
-        <%= f.collection_select :service_id, Service.order(:name), :id, :name, {:prompt => 'Select a service'}, {:class => 'form-control'} %>
+        <p id="pleaseLoginForService"> You must be logged in to subscribe to a service </p>
       </div>
 
-      <div class="actions">
-        <%= f.submit "Subscribe to this service", class: 'button' %>
-      </div>
-      <p class="message">Want to see your subscriptions? <a href="<%= subscriptions_path %>">Click Here</a></p>
+      <% end %>
     <% end %>
   </div>
 </div>
