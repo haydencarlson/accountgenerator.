@@ -7,4 +7,7 @@ Rails.application.routes.draw do
 
   resources :services
   resources :subscriptions
+
+
+  match '/webhook', :to => 'subscriptions#webhook', via: [:post]
 end

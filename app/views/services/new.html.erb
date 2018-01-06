@@ -3,7 +3,7 @@
     <%= form_for(@subscription, class: 'register-form') do |f| %>
 
       <div class="field">
-        <%= f.collection_select :service_id, Service.order(:name), :id, :name, {:prompt => 'Select a service'} %>
+        <%= f.collection_select :service_id, Service.order(:name), :id, :name, {:prompt => 'Select a service'}, {:class => 'form-control'} %>
       </div>
 
       <div class="actions">
