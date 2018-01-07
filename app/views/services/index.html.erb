@@ -1,21 +1,24 @@
 <div class="service_container">
   <%= tabs do |c| %>
-    <% c.tab 'TV' do %>
-      <% @tv_services.each do |s| %>
+    <% @service_categories.each do |category| %>
+      <% c.tab category.name do %>
+        <div class="container">
+          <% category.service_items.each do |item| %>
+            <%= link_to new_service_path(:service_id => item.id), :class => "new_service_link" do %>
+              <div class="service_item">
+                  <div class="service_item_name">
+                    <p> <%= item.name %> </p>
+                  </div>
+                  </br>
 
+                  <div>
+                    <p> $<%= item.price %> </p>
+                  </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
       <% end %>
-    <% end %>
-    <% c.tab 'Sports' do %>
-      <span>Tab content 2</span>
-    <% end %>
-    <% c.tab 'Music' do %>
-      <span>Tab content 2</span>
-    <% end %>
-    <% c.tab 'VPN' do %>
-      <span>Tab content 2</span>
-    <% end %>
-    <% c.tab 'News' do %>
-      <span>Tab content 2</span>
     <% end %>
   <% end %>
 </div>
