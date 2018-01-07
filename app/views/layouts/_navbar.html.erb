@@ -15,9 +15,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="<%= new_service_path %>">Services</a></li>
-        <li><a href="<%= subscriptions_path %>">Subscriptions</a></li>
+        <li class="<%= 'active' if params[:controller] == 'home' %>"><a href="#">Home</a></li>
+        <li class="<%= 'active' if params[:controller] == 'services' %>"><a href="<%= new_service_path %>">Services</a></li>
+        <li class="<%= 'active' if params[:controller] == 'subscriptions' %>"><a href="<%= subscriptions_path %>">Subscriptions</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
