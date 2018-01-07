@@ -11,6 +11,27 @@
   }
 }
 
+.service_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 15px;
+  flex-direction: row;
+  padding: 10px;
+  flex-wrap: wrap;
+  height: 75px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #e8e8e8;
+  width: 135px;
+  background-color: whitesmoke;
+
+  .service_item_name {
+    flex: 0 1 100%;
+    text-align: center;
+  }
+}
+
 .service_payment_info {
   margin-bottom: 20px;
 }
@@ -18,6 +39,10 @@
 .service_container {
   .tab-content {
     background-color: white;
+  }
+  .new_service_link {
+    color: inherit;
+    text-decoration: none;
   }
   .nav-tabs {
     background-color: white;

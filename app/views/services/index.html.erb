@@ -4,12 +4,18 @@
       <% c.tab category.name do %>
         <div class="container">
           <% category.service_items.each do |item| %>
-            <div class="service_item">
-              <%= link_to new_service_path(:service_id => item.id) do %>
-                <span> <%= item.name %> </span>
-                <span> <%= item.price %> </span>
-              <% end %>
-            </div>
+            <%= link_to new_service_path(:service_id => item.id), :class => "new_service_link" do %>
+              <div class="service_item">
+                  <div class="service_item_name">
+                    <p> <%= item.name %> </p>
+                  </div>
+                  </br>
+
+                  <div>
+                    <p> $<%= item.price %> </p>
+                  </div>
+              </div>
+            <% end %>
           <% end %>
         </div>
       <% end %>
