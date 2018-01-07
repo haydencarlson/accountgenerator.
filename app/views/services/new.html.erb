@@ -1,6 +1,13 @@
 <div class="login-page">
   <div class="form">
     <%= form_for(@subscription, class: 'register-form') do |f| %>
+
+      <% if flash[:error].class == Array && flash[:error].any? %>
+        <% flash[:error].each do |e| %>
+          <p style="color:red;"> <%= e %> </p>
+        <% end %>
+      <% end %>
+
       <div class="field">
         <%= f.collection_select :service_id, Service.order(:name), :id, :name, {:prompt => 'Select a service'}, {:class => 'form-control serviceSelector'} %>
       </div>

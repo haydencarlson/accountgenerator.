@@ -11,9 +11,11 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
+    if check_for_errors
+      return redirect_to new_service_path
+    end
     @service = Service.find(params['subscription']['service_id'])
     @gateway = Gateway.find(params['subscription']['id'])
-
     payload = {
       title: @service.name.titleize,
       gateway: @gateway.name,
@@ -27,7 +29,6 @@ class SubscriptionsController < ApplicationController
     response = RestClient.post(SELLY_PAY_API_URL, payload, headers={ :Authorization => "Basic #{Base64.strict_encode64(AUTH_HEADER)}"})
     response = JSON.parse(response)
     redirect_to response['url']
-
   end
 
   def webhook
@@ -35,6 +36,26 @@ class SubscriptionsController < ApplicationController
       user = User.find(params['uid'])
       subscription = user.subscriptions.create(service_id: params['sid'])
       redirect_to subscriptions_path
+    end
+  end
+
+  def check_for_errors
+    flash[:error] = []
+
+    if params['subscription']['service_id'] == ''
+      flash[:error] << 'Please choose a service.'
+    elsif current_user.subscriptions.where(service_id: params)
+      return flash[:error] << "You are already subscribed to this service."
+    end
+
+    if params['subscription']['id'] == ''
+      flash[:error] << "Please choose a payment method."
+    end
+
+    if flash[:error].any?
+      true
+    else
+      false
     end
   end
 
