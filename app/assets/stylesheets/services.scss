@@ -10,3 +10,22 @@
     font-size: 12px;
   }
 }
+.service_container {
+  .tab-content {
+    background-color: white;
+  }
+  .nav-tabs {
+    background-color: white;
+
+    li.active {
+      a {
+        border: none;
+      }
+    }
+    li {
+      a {
+        border-radius: 0px;
+      }
+    }
+  }
+}
