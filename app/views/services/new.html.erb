@@ -8,9 +8,14 @@
         <% end %>
       <% end %>
 
-      <!-- <div class="field">
-        <%= f.collection_select :service_id, Service.order(:name), :id, :name, {:prompt => 'Select a service'}, {:class => 'form-control serviceSelector'} %>
-      </div> -->
+      <div class="field service_payment_info">
+        <span> Service: <%= @service.name %> </span>
+      </div>
+
+      <div class="field service_payment_info">
+        <span> Price: <%= @service.price %> </span>
+      </div>
+
       <% if current_user %>
 
         <div class="field">
