@@ -12,16 +12,17 @@ class SubscriptionsController < ApplicationController
 
   def create
     if check_for_errors
-      return redirect_to new_service_path
+      return redirect_to new_service_path(:service_id => params['service_id'])
     end
-    @service = Service.find(params['subscription']['service_id'])
+    @service = Service::Item.find(params['service_id'])
     @gateway = Gateway.find(params['subscription']['id'])
+
     payload = {
       title: @service.name.titleize,
       gateway: @gateway.name,
       email: current_user.email,
       value: @service.price,
-      currency: 'CAD',
+      currency: 'USD',
       return_url: 'http://0b7b673e.ngrok.io/subscriptions',
       webhook_url: "http://0b7b673e.ngrok.io/webhook?sid=#{@service.id}&uid=#{current_user.id}&secret=#{Rails.application.secrets.webhook_secret}"
     }
@@ -42,9 +43,9 @@ class SubscriptionsController < ApplicationController
   def check_for_errors
     flash[:error] = []
 
-    if params['subscription']['service_id'] == ''
+    if params['service_id'] == ''
       flash[:error] << 'Please choose a service.'
-    elsif current_user.subscriptions.where(service_id: params)
+    elsif current_user.subscriptions.where(service_id: params['service_id']).any?
       return flash[:error] << "You are already subscribed to this service."
     end
 
