@@ -7,7 +7,9 @@
           <p style="color:red;"> <%= e %> </p>
         <% end %>
       <% end %>
-      
+
+      <%= hidden_field_tag 'service_id', @service.id %>
+
       <div class="field service_payment_info">
         <span> Service: <%= @service.name %> </span>
       </div>
@@ -30,7 +32,7 @@
       <% else %>
 
       <div class="field">
-        <p id="pleaseLoginForService"> You must be logged in to subscribe to a service </p>
+        <p id="pleaseLoginForService"> You must be logged in to subscribe to this service </p>
       </div>
 
       <% end %>
