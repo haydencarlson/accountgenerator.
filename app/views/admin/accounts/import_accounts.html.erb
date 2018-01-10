@@ -1,0 +1,8 @@
+<h2>Import</h2>
+<%= form_tag(account_importer_path, method: "post", multipart: true) do |f| %>
+  Account list (login:password):
+  <%= text_area_tag 'account_list' %>
+  <br/>
+  <%= submit_tag "Import Accounts" %>
+<% end %>
+<br/>

@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   resources :services
   resources :subscriptions
 
-
   match '/webhook', :to => 'subscriptions#webhook', via: [:post]
+  match '/account_importer', :to => 'account_importer#create', via: [:post]
 end
