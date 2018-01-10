@@ -4,7 +4,7 @@ class CreateAccounts < ActiveRecord::Migration[5.1]
       t.string :login
       t.string :password
       t.string :country_iso_4217
-      t.references :service
+      t.references :service_item
       t.string :status
       t.timestamps
     end
