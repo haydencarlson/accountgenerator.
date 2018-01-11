@@ -75,19 +75,11 @@ ActiveRecord::Schema.define(version: 20180109000735) do
     t.index ["service_category_id"], name: "index_service_items_on_service_category_id"
   end
 
-  create_table "services", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name"
-    t.decimal "price", precision: 20, scale: 10
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "category"
-  end
-
   create_table "subscriptions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "user_id"
-    t.bigint "service_id"
+    t.bigint "service_item_id"
     t.datetime "expires_at"
-    t.index ["service_id"], name: "index_subscriptions_on_service_id"
+    t.index ["service_item_id"], name: "index_subscriptions_on_service_item_id"
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
