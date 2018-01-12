@@ -45,7 +45,7 @@ class SubscriptionsController < ApplicationController
 
     if params['service_id'] == ''
       flash[:error] << 'Please choose a service.'
-    elsif current_user.subscriptions.where(service_id: params['service_id']).any?
+    elsif current_user.subscriptions.where(service_item_id: params['service_id']).any?
       return flash[:error] << "You are already subscribed to this service."
     end
 

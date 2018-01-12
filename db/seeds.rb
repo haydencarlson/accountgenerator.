@@ -6,14 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
-
+#
 # Gateway.create(name: 'PayPal')
 # Gateway.create(name: 'Bitcoin')
 # Gateway.create(name: 'Litecoin')
 # Gateway.create(name: 'Bitcoin Cash')
 # Gateway.create(name: 'Ethereum')
-#
-#
+# #
+# #
 # Service::Category.create(id: 1, name: 'TV')
 # Service::Category.create(id: 2, name: 'Sports')
 # Service::Category.create(id: 3, name: 'Music')
@@ -22,7 +22,7 @@
 # Service::Category.create(id: 6, name: 'Educational')
 
 
-#TV Show Service::Items :
+# TV Show Service::Items :
 
 Service::Item.create(id: 1, name: 'Crunchyroll', price: 4.99, service_category_id: 1)
 Service::Item.create(id: 2, name: 'DirectTV', price: 4.99, service_category_id: 1)
